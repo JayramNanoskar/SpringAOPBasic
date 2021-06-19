@@ -1,6 +1,7 @@
 package com.jayram.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -13,7 +14,7 @@ public class LoggingAspect {
 		System.out.println("Advice run. Get method called. at "+ joinPoint.toString());
 	}
 
-	@Before("args(name)")
+	@After("args(name)")
 	public void StringArgumentMethods(String name){
 		System.out.println("A method that takes String argument has been called. The value is "+name);
 	}
