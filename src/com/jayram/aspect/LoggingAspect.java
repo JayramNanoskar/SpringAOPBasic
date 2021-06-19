@@ -16,14 +16,14 @@ public class LoggingAspect {
 		System.out.println("Advice run. Get method called. at "+ joinPoint.toString());
 	}
 
-	@AfterReturning("args(name)")
-	public void StringArgumentMethods(String name){
-		System.out.println("A method that takes String argument has been called. The value is "+name);
+	@AfterReturning(pointcut="args(name)", returning="returnString")
+	public void StringArgumentMethods(String name, String returnString){
+		System.out.println("A method that takes String argument has been called. The value is "+name+" and The output value is "+returnString);
 	}
 
-	@AfterThrowing("args(name)")
-	public void exceptionAdvice(String name){
-		System.out.println("An excepetion has been thrown");
+	@AfterThrowing(pointcut="args(name)", throwing="ex")
+	public void exceptionAdvice(String name, RuntimeException ex){
+		System.out.println("An excepetion has been thrown "+ex.toString());
 	}
 
 	@Before("allGetters()")
