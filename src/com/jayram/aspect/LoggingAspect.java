@@ -13,6 +13,11 @@ public class LoggingAspect {
 		System.out.println("Advice run. Get method called. at "+ joinPoint.toString());
 	}
 
+	@Before("args(name)")
+	public void StringArgumentMethods(String name){
+		System.out.println("A method that takes String argument has been called. The value is "+name);
+	}
+
 	@Before("allGetters()")
 	public void secondAdvice(){
 		System.out.println("Second Advice executed.");
