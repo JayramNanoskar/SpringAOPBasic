@@ -1,5 +1,6 @@
 package com.jayram.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -7,9 +8,9 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LoggingAspect {
 	
-	@Before("allGetters() && allCircleMethod()")
-	public void loggingAdvise(){
-		System.out.println("Advice run. Get method called.");
+	@Before("allCircleMethod()")
+	public void loggingAdvise(JoinPoint joinPoint){
+		System.out.println("Advice run. Get method called. at "+ joinPoint.toString());
 	}
 
 	@Before("allGetters()")
