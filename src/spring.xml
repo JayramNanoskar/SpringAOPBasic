@@ -23,6 +23,9 @@
    <bean name="shapeService" class="com.jayram.service.ShapeService" autowire="byName">
    </bean>
    
+   <bean name="loggingAspect" class="com.jayram.aspect.LoggingAspect"></bean>
+   
+   <aop:aspectj-autoproxy></aop:aspectj-autoproxy> <!-- It tells Spring container that we are using AOP -->
    <context:annotation-config/> <!-- To define all annotations related to BeanPostProcessor we can use this tag alone -->
 
 </beans>
