@@ -17,7 +17,6 @@
    </bean>
    
    <bean name="circle" class="com.jayram.model.Circle">
-   		<property name="name" value="Circle Name"></property>
    </bean>
    
    <bean name="shapeService" class="com.jayram.service.ShapeService" autowire="byName">

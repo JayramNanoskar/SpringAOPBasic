@@ -2,6 +2,8 @@ package com.jayram.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -14,9 +16,14 @@ public class LoggingAspect {
 		System.out.println("Advice run. Get method called. at "+ joinPoint.toString());
 	}
 
-	@After("args(name)")
+	@AfterReturning("args(name)")
 	public void StringArgumentMethods(String name){
 		System.out.println("A method that takes String argument has been called. The value is "+name);
+	}
+
+	@AfterThrowing("args(name)")
+	public void exceptionAdvice(String name){
+		System.out.println("An excepetion has been thrown");
 	}
 
 	@Before("allGetters()")
