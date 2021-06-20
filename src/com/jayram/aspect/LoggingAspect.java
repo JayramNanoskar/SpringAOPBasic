@@ -1,9 +1,11 @@
 package com.jayram.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -24,6 +26,21 @@ public class LoggingAspect {
 	@AfterThrowing(pointcut="args(name)", throwing="ex")
 	public void exceptionAdvice(String name, RuntimeException ex){
 		System.out.println("An excepetion has been thrown "+ex.toString());
+	}
+
+	@Around("allGetters()")
+	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
+		Object returnValue = null;
+		try {
+			System.out.println("Before advice");
+			returnValue = proceedingJoinPoint.proceed(); //calling target method
+			System.out.println("After returning");
+		} catch (Throwable e) {
+			System.out.println("After throwing");
+			e.printStackTrace();
+		}
+		System.out.println("After finally");
+		return returnValue;
 	}
 
 	@Before("allGetters()")
