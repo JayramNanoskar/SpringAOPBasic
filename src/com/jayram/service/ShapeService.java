@@ -16,6 +16,7 @@ public class ShapeService {
 		this.circle = circle;
 	}
 	public Triangle getTriangle() {
+		System.out.println("Triangle getter called.");
 		return triangle;
 	}
 	public void setTriangle(Triangle triangle) {

@@ -53,4 +53,8 @@ public class LoggingAspect {
 
 	@Pointcut("within(com.jayram.model.*)") //Point cut expression to all classes present inside model package.
 	public void allCircleMethod(){}
+
+	public void loggingAdvice(){
+		System.out.println("Logging from the advice");
+	}
 }
