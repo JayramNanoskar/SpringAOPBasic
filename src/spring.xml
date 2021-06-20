@@ -23,6 +23,14 @@
    </bean>
    
    <bean name="loggingAspect" class="com.jayram.aspect.LoggingAspect"></bean>
+   <bean name="loggingXmlBasedAspect" class="com.jayram.aspect.LoggingXmlConfigBasedAspect"></bean>
+   
+   <aop:config>
+   		<aop:aspect id="loggingXmlBasedAspect" ref="loggingXmlBasedAspect">
+   			<aop:pointcut id="allGetters" expression="execution(public * get*(..))"/>
+   			<aop:after pointcut-ref="allGetters" method="myAdvice"/>
+   		</aop:aspect>
+   </aop:config>
    
    <aop:aspectj-autoproxy></aop:aspectj-autoproxy> <!-- It tells Spring container that we are using AOP -->
    <context:annotation-config/> <!-- To define all annotations related to BeanPostProcessor we can use this tag alone -->
