@@ -1,5 +1,6 @@
 package com.jayram.service;
 
+import com.jayram.aspect.Loggable;
 import com.jayram.model.Circle;
 import com.jayram.model.Triangle;
 
@@ -7,6 +8,7 @@ public class ShapeService {
 	private Circle circle;
 	private Triangle triangle;
 	
+	@Loggable
 	public Circle getCircle() {
 		return circle;
 	}
