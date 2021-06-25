@@ -1,0 +1,97 @@
+-----------------------------------------------------------AOP----------------------------------------------------------------
+**Introduction to AOP(Aspect Oriented Programming)
+-It is spring feature.
+-Aspect in spring are like filter in servlet, interceptors in angular, triggers in database.
+-Crosscutting objects are those who concerns different other object in our problem domain.
+-We don't need to reference created Aspects in our code, instead we provide just configuration which tells where they need to be run.
+-There are methods inside Aspects which get executed as per Aspect configuration.
+-It provides the pluggable way to dynamically add the additional concern before, after or around the actual logic.
+
+
+**Problems without AOP i.e. with Functional or Object oriented programming:
+-To many relationships to the crosscutting objects.
+-Code is still required in all methods.
+-Cannot all be changed at once easily.
+
+
+**Steps in AOP:
+1.Write Aspect by identifing crosscutting concerns like related to logging, transactions, security etc.
+2.Configure places where the aspects apply
+
+
+**Setting Up AOP Dependencies
+-AspectJ is an aspect-oriented programming(AOP) extension created for the Java programming language.
+-When running an AspectJ program, the classpath should contain AspectJ runtime library aspectjrt.jar & To introduce advice to Java class at load time we need aspectjweaver.jar.
+-CGLIB is a powerful, high performance code generation library. It is widely used behind the scenes in proxy-based Aspect Oriented Programming (AOP) frameworks, such as Spring AOP and dynaop, to provide method interceptions.
+-ASM is an all purpose Java bytecode manipulation and analysis framework. It can be used to modify existing classes or to dynamically generate classes, directly in binary form.
+-The AOP Alliance aims to ensure interoperability between Java/J2EE AOP implementations to build a larger AOP community.
+
+AspectJ: http://www.eclipse.org/aspectj/download -> aspectjrt-1.9.6.jar, aspectjweaver-1.9.6.jar
+CGILIB: http://cglib.sourceforge.net/ -> cglib-3.3.0.jar
+Spring 3 ASM: http://asm.ow2.org/ -> asm-9.1.jar
+AOP Alliance: http://aopalliance.sourceforge.net/ -> aopalliance.jar
+
+
+**AOP Terminology:
+-Advice is standard AOP terminology for crosscutting concerns which we isolates into aspects.
+-Aspects can contain number of advice.
+-Advice method can be configured to run on particular method run.
+-Annotation @Aspect makes class an aspects and methods of that class become advice. We can apply any advice to any of other method in spring container.
+-Advice get executed only when programmer make explicit calls but not on spring container calls to initialize member variables & dependencies.
+
+
+->Pointcuts and Wildcard Expressions:
+-When single advice to get apply in different point, we can use Wildcard Expressions.
+-Pointcuts is a predicate or expression. Pointcut is Expression to get apply to multiple advice method.
+
+
+->A Few More Pointcut Expressions:
+-Some Pointcut expressions we can use are:
+@Pointcut("execution(method_details)")
+@Pointcut("within(class_details)")
+@Pointcut("args(argument_details)")
+-We can combine pointcut expressions using logical operators.
+
+
+->JoinPoints and Advice Arguments:
+-JoinPoints means, all the places in our code where we can apply advise. We can take JoinPoint as advice method argument & it has information about the method being executed.
+-With Spring AOP we can apply advise to method only but with AspectJ AOP we can apply advise to member variable also.
+-We can access method arguments inside Advice using Advice Arguments.
+
+
+->After Advice Types:
+-It is exactly reverse of Before advice type.
+-@After advice executes at the end irrespective of normal or abnormal completion of target method. It is like finally block.
+-@AfterReturning advice executes at the end on only successful completion of target method.
+-@AfterThrowing advice executes at the end on only unsuccessful completion(if exception thrown) of target method.
+-Even we can catch the return value and exception in AfterReturning and AfterThrowing.
+
+
+->Around Advice Type:
+-To run advice before and after target method, Around Advice can be used.
+-Here we can decide whether target method to get called or not. That is advantage over Before & After advice.
+
+
+->Custom Advice Annotations:
+-Instead of specifying pointcut expression that is tied to method signature/class name/package name, tying it to annotation is more convenient.
+
+
+->AOP XML configuration:
+-We can configure Aspect by using only xml configuration also.
+-But Annotation based configurations are simple and readable than XML configuration.
+-While working with older codebased projects we can use XML based configuration.
+
+
+->Understanding AOP Proxies:
+-Spring implements AOP using proxy objects.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
